@@ -1,0 +1,10 @@
+#
+# Setup environment for development
+#
+# First the conky libraries
+brew install cmake freetype gettext lua imlib2 pkg-config
+brew link gettext --force
+
+# Clone My Repos
+git clone --recurse-submodules https://github.com/Conky-for-macOS/Manage-Conky
+git clone https://github.com/npyl/npyl.github.io
