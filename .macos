@@ -5,6 +5,9 @@
 brew install cmake freetype gettext lua imlib2 pkg-config
 brew link gettext --force
 
+# Install Amethyst (Tiled Window Manager)
+brew cask install amethyst
+
 # Clone My Repos
 git clone --recurse-submodules https://github.com/Conky-for-macOS/Manage-Conky
 git clone https://github.com/npyl/npyl.github.io
