@@ -1,16 +1,6 @@
 #
-# Setup environment for development
+# Setup macOS environment
 #
-# First the conky libraries
-brew install cmake freetype gettext lua imlib2 pkg-config
-brew link gettext --force
-
-# Install Amethyst (Tiled Window Manager)
-brew cask install amethyst
-
-# Clone My Repos
-git clone --recurse-submodules https://github.com/Conky-for-macOS/Manage-Conky
-git clone https://github.com/npyl/npyl.github.io
 
 # Enable Tap to Click
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
@@ -18,5 +8,27 @@ sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking 
 sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
+# Install Amethyst (Tiled Window Manager)
+brew cask install amethyst
+
 # Copy Preferences for Amethyst
 cp Preferences/com.amethyst.Amethyst.plist ~/Library/Preferences
+
+# Download Privacy_Services_Management Tool
+curl -L https://github.com/univ-of-utah-marriott-library-apple/privacy_services_manager/releases/download/1.7.2/Privacy_Services_Management_1.7.2.dmg -o /tmp/temp.dmg
+# XXX
+# mount
+# call installer
+# use tool to grant accessibility access to Amethyst
+
+#
+# Setup environment for development
+#
+
+# First the conky libraries
+brew install cmake freetype gettext lua imlib2 pkg-config
+brew link gettext --force
+
+# Clone My Repos
+git clone --recurse-submodules https://github.com/Conky-for-macOS/Manage-Conky
+git clone https://github.com/npyl/npyl.github.io
