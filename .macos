@@ -21,6 +21,9 @@ curl -L https://github.com/univ-of-utah-marriott-library-apple/privacy_services_
 # call installer
 # use tool to grant accessibility access to Amethyst
 
+# Apply LaunchAgents
+cp LaunchAgents/npyl.Amethyst.plist ~/Library/LaunchAgents
+
 #
 # Setup environment for development
 #
