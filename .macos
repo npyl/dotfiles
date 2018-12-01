@@ -1,6 +1,8 @@
-#
-# Setup macOS environment
-#
+# XXX probably download cocoasudo for sudo...
+
+###########################
+# Setup macOS environment #
+###########################
 
 # Enable Tap to Click
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
@@ -11,27 +13,49 @@ sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Install Amethyst (Tiled Window Manager)
 brew cask install amethyst
 
-# Copy Preferences for Amethyst
+# Copy preferences for Amethyst
 cp Preferences/com.amethyst.Amethyst.plist ~/Library/Preferences
 
-# Download Privacy_Services_Management Tool
+#
+# Install Management_Tools
+# (prerequisite to next tool)
+#
+# Download Management_Tools
+curl -L https://github.com/univ-of-utah-marriott-library-apple/management_tools/releases/download/v1.9.1/Management_Tools_1.9.1.dmg -o /tmp/Management_Tools.dmg
+
+# Attach
+hdiutil attach /tmp/Management_Tools.dmg -mountpoint /Volumes/MT -nobrowse
+
+# Install
+sudo installer -pkg "/Volumes/MT/Management Tools [1.9.1].pkg" -target /
+
+# Detach
+hdiutil detach /Volumes/MT -force
+
+#
+# Install Privacy_Services_Management Tool
+#
+# download Privacy Services Manager
 curl -L https://github.com/univ-of-utah-marriott-library-apple/privacy_services_manager/releases/download/1.7.2/Privacy_Services_Management_1.7.2.dmg -o /tmp/Privacy_Services_Management_1.7.2.dmg
 
-# Mount
+# Attach
 hdiutil attach /tmp/Privacy_Services_Management_1.7.2.dmg -mountpoint /Volumes/PSM -nobrowse
 
 # Install
-# XXX probably download cocoasudo for sudo...
 sudo installer -pkg "/Volumes/PSM/Privacy Services Management [1.7.2].pkg" -target /
 
+# Detach
+hdiutil detach /Volumes/PSM -force
+
 # use tool to grant accessibility access to Amethyst
+#XXX
 
 # Apply LaunchAgents
 cp LaunchAgents/npyl.Amethyst.plist ~/Library/LaunchAgents
 
-#
-# Setup environment for development
-#
+#####################################
+# Setup environment for development #
+#####################################
 
 # First the conky libraries
 brew install cmake freetype gettext lua imlib2 pkg-config
@@ -40,3 +64,17 @@ brew link gettext --force
 # Clone My Repos
 git clone --recurse-submodules https://github.com/Conky-for-macOS/Manage-Conky
 git clone https://github.com/npyl/npyl.github.io
+
+#
+# Install Xcode
+#
+# Download `mas`
+brew install mas
+
+# Install Xcode
+mas install 497799835
+
+###########
+# CLEANUP #
+###########
+brew cleanup
