@@ -15,10 +15,15 @@ brew cask install amethyst
 cp Preferences/com.amethyst.Amethyst.plist ~/Library/Preferences
 
 # Download Privacy_Services_Management Tool
-curl -L https://github.com/univ-of-utah-marriott-library-apple/privacy_services_manager/releases/download/1.7.2/Privacy_Services_Management_1.7.2.dmg -o /tmp/temp.dmg
-# XXX
-# mount
-# call installer
+curl -L https://github.com/univ-of-utah-marriott-library-apple/privacy_services_manager/releases/download/1.7.2/Privacy_Services_Management_1.7.2.dmg -o /tmp/Privacy_Services_Management_1.7.2.dmg
+
+# Mount
+hdiutil attach /tmp/Privacy_Services_Management_1.7.2.dmg -mountpoint /Volumes/PSM -nobrowse
+
+# Install
+# XXX probably download cocoasudo for sudo...
+sudo installer -pkg "/Volumes/PSM/Privacy Services Management [1.7.2].pkg" -target /
+
 # use tool to grant accessibility access to Amethyst
 
 # Apply LaunchAgents
