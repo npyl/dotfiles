@@ -1,8 +1,16 @@
-# XXX probably download cocoasudo for sudo...
+#	which means cocoasudo should remember that we gave it access just a bit earlier...
+#	just like sudo does...
+# XXX Install Spark email client using MAS tool and make it run at login...
 
 ###########################
 # Setup macOS environment #
 ###########################
+
+# Download cocoasudo
+curl -L https://github.com/npyl/cocoasudo/releases/download/v0.1/cocoasudo.zip > /tmp/cocoasudo.zip
+unzip /tmp/cocoasudo.zip -d /tmp
+# Install cocoasudo
+/tmp/cocoasudo/InstallCocoasudo.command
 
 # Enable Tap to Click
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
@@ -50,7 +58,9 @@ hdiutil detach /Volumes/PSM -force
 # use tool to grant accessibility access to Amethyst
 #XXX
 
+#
 # Apply LaunchAgents
+#
 cp LaunchAgents/npyl.Amethyst.plist ~/Library/LaunchAgents
 
 #####################################
