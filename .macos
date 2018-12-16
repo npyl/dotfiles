@@ -1,6 +1,5 @@
 #	which means cocoasudo should remember that we gave it access just a bit earlier...
 #	just like sudo does...
-# XXX Install Spark email client using MAS tool and make it run at login...
 
 ###########################
 # Setup macOS environment #
@@ -17,6 +16,9 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Install Spark - Email Client
+mas install 1176895641
 
 # Install Amethyst (Tiled Window Manager)
 brew cask install amethyst
