@@ -60,6 +60,18 @@ hdiutil detach /Volumes/PSM -force
 # use tool to grant accessibility access to Amethyst
 #XXX
 
+# Download Sublime Text
+curl -L "https://download.sublimetext.com/Sublime%20Text%20Build%203176.dmg" > /tmp/SublimeText.dmg
+
+# Attach
+hdiutil attach /tmp/SublimeText.dmg -mountpoint /Volumes/SublimeText -nobrowse
+
+# Copy to /Applications
+cp -R "/Volumes/SublimeText/Sublime Text.app" "/Applications"
+
+# Detach
+hdiutil detach /Volumes/SublimeText -force
+
 #
 # Apply LaunchAgents
 #
@@ -90,3 +102,19 @@ mas install 497799835
 # CLEANUP #
 ###########
 brew cleanup
+
+echo "\n"
+echo "~~END~~"
+echo "\n"
+
+#
+# We should install `Package Control`
+# `Plain Tasks` & `TextMarker`
+# We can't really do that automatically, so print a message! :)
+#
+echo "\n"
+echo "\n"
+echo "Install Package Control, then install ``Plain Tasks`` and ``TextMarker``"
+echo "\n"
+echo "\n"
+
